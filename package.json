@@ -4,7 +4,7 @@
   "description": "s2i project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
   "author": "Paolo Galli",
   "license": "ISC",
