@@ -16,6 +16,7 @@ const btnStartDiv = document.querySelector("#btnStartDiv");
 const [date, time] = formatDate(new Date()).split(" ");
 // console.log(new Date());
 // Sun Feb 25 2024 23:53:41 GMT+0100 (Ora standard dell’Europa centrale)
+let counterTimer;
 
 // Tabella in ms
 const secondInMs = 1000;
@@ -48,13 +49,13 @@ function timer() {
   // Today
   const nowInMs = new Date().getTime();
   const endCalendarTimer = dateSelectedInMs - nowInMs;
-  console.log(nowInMs);
-  console.log(dateSelectedInMs);
-  console.log(endCalendarTimer);
+  // console.log(nowInMs);
+  // console.log(dateSelectedInMs);
+  // console.log(endCalendarTimer);
 
-  if (nowInMs === dateSelectedInMs) {
-    clearInterval(timer);
-    console.log("Finish");
+  if (nowInMs === dateSelectedInMs || endCalendarTimer < 0) {
+    clearInterval(counterTimer);
+    alert("The countdown is over, please click 'Reset'");
   } else {
     days.innerHTML = Math.floor(endCalendarTimer / dayInMs);
     hours.innerHTML = Math.floor((endCalendarTimer % dayInMs) / hourInMs);
@@ -67,8 +68,20 @@ function timer() {
 
 dateInput.value = date;
 
+// Start timer
 btnStart.addEventListener("click", function () {
   btnStartDiv.style.zIndex = -30;
-  const counterTimer = setInterval(timer, 1000);
+  counterTimer = setInterval(timer, 1000);
   timer();
+});
+
+// Stop timer
+btnReset.addEventListener("click", function () {
+  clearInterval(counterTimer);
+  dateInput.value = date;
+  days.textContent = "";
+  hours.textContent = "";
+  minutes.textContent = "";
+  seconds.textContent = "";
+  btnStartDiv.style.zIndex = 30;
 });
