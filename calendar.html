@@ -23,36 +23,44 @@
         <div class="flex flex-col gap-16 items-center">
           <!-- Display -->
           <div class="w-full h-auto flex justify-center items-center">
-            <input type="date" id="date" value="2024-02-26" class="text-6xl bg-rich-blue-300 text-center"></input>
+            <input type="date" id="date" value="" class="text-6xl bg-rich-blue-300 text-center"></input>
           </div>
           <div class="flex justify-center items-center gap-10">
-            <div class="flex flex-col justify-center items-center">
-              <div id="days" class="text-3xl text-rich-blue-800">00</div>
+            <div class="flex flex-col justify-center items-center text-center">
+              <div id="days" class="w-full min-h-9 text-3xl text-rich-blue-800"></div>
               <span class="text-lg">Days</span>
             </div>
-            <div class="flex flex-col justify-center items-center">
-              <div id="hours" class="text-3xl text-rich-blue-700">00</div>
+            <div class="flex flex-col justify-center items-center text-center">
+              <div id="hours" class="w-full min-h-9 text-3xl text-rich-blue-700"></div>
               <span class="text-lg">Hours</span>
             </div>
-            <div class="flex flex-col justify-center items-center">
-              <div id="minutes" class="text-3xl text-rich-blue-600">00</div>
+            <div class="flex flex-col justify-center items-center text-center">
+               <div id="minutes" class="w-full min-h-9 text-3xl text-rich-blue-600"></div>
               <span class="text-lg">Minutes</span>
             </div>
-            <div class="flex flex-col justify-center items-center">
-              <div id="seconds" class="text-3xl text-rich-blue-500">00</div>
+            <div class="flex flex-col justify-center items-center text-center">
+               <div id="seconds" class="w-full min-h-9 text-3xl text-rich-blue-500"></div>
               <span class="text-lg">Seconds</span>
             </div>
           </div>
           <!-- Buttons -->
-          <div class="w-[25rem] flex justify-around items-center">
+          <div class="w-[25rem] flex justify-around items-center relative pt-40">
             <!-- Start -->
-            <div class="">
+            <div id="btnStartDiv" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
               <button id="btnStart"
-                class="w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 shadow-btn-rounded caret-transparent"
+              class="w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 shadow-btn-rounded caret-transparent"
               >
-                Start
-              </button>
-            </div>
+              Start
+            </button>
+          </div>
+          <!-- Reset -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <button id="btnReset"
+              class="w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 shadow-btn-rounded caret-transparent"
+            >
+              Reset
+            </button>
+          </div>
           </div>
         </div>
       </div>
