@@ -10,7 +10,9 @@
       rel="stylesheet"
     />
     <link href="./src/output.css" rel="stylesheet" />
-    <title>Timer window</title>
+    <script defer src="./src/js/shared.js"></script>
+    <script defer src="./src/js/stopwatch.js"></script>
+    <title>Stopwatch window</title>
   </head>
   <body>
     <div
@@ -22,13 +24,14 @@
         <div class="flex flex-col gap-16 items-center">
           <!-- Display -->
           <div class="w-full h-auto flex justify-center items-center">
-            <span class="text-9xl">00:00:00</span>
+            <span id="swDisplay" class="text-9xl"></span>
           </div>
           <!-- Buttons -->
           <div class="w-[25rem] flex justify-around items-center">
             <!-- Stop -->
             <div class="">
               <button
+                id="btnStop"
                 class="w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 shadow-btn-rounded caret-transparent"
               >
                 Stop
@@ -37,6 +40,7 @@
             <!-- Reset -->
             <div class="self-end">
               <button
+                id="btnReset"
                 class="shadow-btn-rounded w-14 aspect-square text-lg text-center rounded-full bg-rich-blue-700 caret-transparent"
               >
                 Reset
@@ -45,6 +49,7 @@
             <!-- Start -->
             <div class="">
               <button
+                id="btnStart"
                 class="shadow-btn-rounded w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 caret-transparent"
               >
                 Start

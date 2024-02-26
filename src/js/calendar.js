@@ -1,6 +1,6 @@
 "use strict";
 
-// DOM
+// Selecting Elements
 // ----------------------------------------------------------------------------------
 const days = document.querySelector("#days");
 const hours = document.querySelector("#hours");
@@ -16,7 +16,6 @@ const btnStartDiv = document.querySelector("#btnStartDiv");
 const [date, time] = formatDate(new Date()).split(" ");
 // console.log(new Date());
 // Sun Feb 25 2024 23:53:41 GMT+0100 (Ora standard dell’Europa centrale)
-let counterTimer;
 
 // Tabella in ms
 const secondInMs = 1000;
@@ -24,12 +23,10 @@ const minuteInMs = 60 * secondInMs;
 const hourInMs = 60 * minuteInMs;
 const dayInMs = 24 * hourInMs;
 
+let counterTimer;
+
 // Functions
 // ----------------------------------------------------------------------------------
-// Reduces the data to 2 digits
-function return2digit(num) {
-  return num.toString().padStart(2, "0");
-}
 
 // Format the date
 // Sun Feb 25 2024 23:53:41 GMT+0100 (Ora standard dell’Europa centrale)
@@ -45,7 +42,7 @@ function formatDate(date) {
 function timer() {
   const dateSelected = dateInput.value;
   const dateSelectedInMs = new Date(dateSelected).getTime();
-  // Refreshing the countdown every second
+  // Updating the countdown every second
   // Today
   const nowInMs = new Date().getTime();
   const endCalendarTimer = dateSelectedInMs - nowInMs;
@@ -55,7 +52,10 @@ function timer() {
 
   if (nowInMs === dateSelectedInMs || endCalendarTimer < 0) {
     clearInterval(counterTimer);
-    alert("The countdown is over, please click 'Reset'");
+    // Added timeout to display 'Resset btn' beore the alert.
+    setTimeout(function () {
+      alert("The countdown is over, please click 'Reset'");
+    }, 100);
   } else {
     days.innerHTML = Math.floor(endCalendarTimer / dayInMs);
     hours.innerHTML = Math.floor((endCalendarTimer % dayInMs) / hourInMs);
