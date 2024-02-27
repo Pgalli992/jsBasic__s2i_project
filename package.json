@@ -4,7 +4,7 @@
   "description": "s2i project",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+    "dev": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch"
   },
   "author": "Paolo Galli",
   "license": "ISC",

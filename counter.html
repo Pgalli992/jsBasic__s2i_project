@@ -9,8 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Anta&display=swap"
       rel="stylesheet"
     />
-    <link href="./src/output.css" rel="stylesheet" />
-    <title>Timer window</title>
+    <link href="./src/css/output.css" rel="stylesheet" />
+    <script defer src="./src/js/shared.js"></script>
+    <script defer src="./src/js/counter.js"></script>
+    <title>Counter window</title>
   </head>
   <body>
     <div
@@ -21,14 +23,16 @@
       >
         <div class="flex flex-col gap-16 items-center">
           <!-- Display -->
-          <div class="w-full h-auto flex justify-center items-center">
-            <span class="text-9xl">0</span>
-          </div>
+          <div
+            id="counterDisplay"
+            class="w-full h-auto text-9xl flex justify-center items-center"
+          ></div>
           <!-- Buttons -->
           <div class="w-[25rem] flex justify-around items-center">
             <!-- Reduce -->
             <div class="">
               <button
+                id="btnReduce"
                 class="w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 shadow-btn-rounded caret-transparent"
               >
                 -
@@ -37,6 +41,7 @@
             <!-- Reset -->
             <div class="self-end">
               <button
+                id="btnReset"
                 class="shadow-btn-rounded w-14 aspect-square text-lg text-center rounded-full bg-rich-blue-700 caret-transparent"
               >
                 Reset
@@ -45,6 +50,7 @@
             <!-- Increase -->
             <div class="">
               <button
+                id="btnIncrese"
                 class="shadow-btn-rounded w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 caret-transparent"
               >
                 +

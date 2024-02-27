@@ -28,6 +28,16 @@ let counterTimer;
 // Functions
 // ----------------------------------------------------------------------------------
 
+function init() {
+  dateInput.value = date;
+  days.innerHTML = "0";
+  hours.innerHTML = "0";
+  minutes.innerHTML = "0";
+  seconds.innerHTML = "0";
+}
+
+init();
+
 // Format the date
 // Sun Feb 25 2024 23:53:41 GMT+0100 (Ora standard dell’Europa centrale)
 function formatDate(date) {
@@ -66,8 +76,6 @@ function timer() {
   }
 }
 
-dateInput.value = date;
-
 // Start timer
 btnStart.addEventListener("click", function () {
   btnStartDiv.style.zIndex = -30;
@@ -78,10 +86,6 @@ btnStart.addEventListener("click", function () {
 // Stop timer
 btnReset.addEventListener("click", function () {
   clearInterval(counterTimer);
-  dateInput.value = date;
-  days.textContent = "";
-  hours.textContent = "";
-  minutes.textContent = "";
-  seconds.textContent = "";
+  init();
   btnStartDiv.style.zIndex = 30;
 });
