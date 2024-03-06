@@ -6,8 +6,8 @@ const days = document.querySelector("#days");
 const hours = document.querySelector("#hours");
 const minutes = document.querySelector("#minutes");
 const seconds = document.querySelector("#seconds");
-const btnStart = document.querySelector("#btnStart");
-const btnReset = document.querySelector("#btnReset");
+const btnStartCalendar = document.querySelector("#btnStartCalendar");
+const btnResetCalendar = document.querySelector("#btnResetCalendar");
 const dateInput = document.getElementById("date");
 const btnStartDiv = document.querySelector("#btnStartDiv");
 
@@ -77,14 +77,14 @@ function timer() {
 }
 
 // Start timer
-btnStart.addEventListener("click", function () {
+btnStartCalendar.addEventListener("click", function () {
   btnStartDiv.style.zIndex = -30;
   counterTimer = setInterval(timer, 1000);
   timer();
 });
 
 // Stop timer
-btnReset.addEventListener("click", function () {
+btnResetCalendar.addEventListener("click", function () {
   clearInterval(counterTimer);
   init();
   btnStartDiv.style.zIndex = 30;

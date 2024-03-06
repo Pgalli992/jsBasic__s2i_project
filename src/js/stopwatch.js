@@ -2,9 +2,9 @@
 
 // Selecting Elements
 // ----------------------------------------------------------------------------------
-const btnStop = document.querySelector("#btnStop");
-const btnStart = document.querySelector("#btnStart");
-const btnReset = document.querySelector("#btnReset");
+const btnStopStopwatch = document.querySelector("#btnStopStopwatch");
+const btnStartStopwatch = document.querySelector("#btnStartStopwatch");
+const btnResetStopwatch = document.querySelector("#btnResetStopwatch");
 const swDisplay = document.querySelector("#swDisplay");
 
 // Variables
@@ -27,8 +27,9 @@ function startSw() {
     startTime = new Date().getTime() - elapsedTime;
     // Update every second
     stopwatchInterval = setInterval(stopWatch, 1000);
-    btnStart.style.transform = "scale(0.8)";
-    btnStop.style.transform = "scale(1.1)";
+    btnStartStopwatch.style.transform = "scale(0.8)";
+    btnStopStopwatch.style.transform = "scale(1.2)";
+    btnResetStopwatch.style.transform = "scale(1.2)";
   }
 }
 
@@ -36,16 +37,18 @@ function stopSw() {
   clearInterval(stopwatchInterval); // stop updating
   elapsedTime = new Date().getTime() - startTime;
   stopwatchInterval = null; // reset the interval variable
-  btnStart.style.transform = "scale(1.1)";
-  btnStop.style.transform = "scale(.8)";
+  btnStartStopwatch.style.transform = "scale(1.2)";
+  btnStopStopwatch.style.transform = "scale(.8)";
+  btnResetStopwatch.style.transform = "scale(1.2)";
 }
 
 function resetSw() {
   stopSw(); // stop the interval
   elapsedTime = 0; // reset the elapsed paused time variable
   swDisplay.innerHTML = "00:00:00"; // reset the display
-  btnStart.style.transform = "scale(1)";
-  btnStop.style.transform = "scale(1)";
+  btnStartStopwatch.style.transform = "scale(1)";
+  btnStopStopwatch.style.transform = "scale(1)";
+  btnResetStopwatch.style.transform = "scale(1)";
 }
 
 function stopWatch() {
@@ -63,6 +66,6 @@ function stopWatch() {
   swDisplay.innerHTML = displayTime; // update the display
 }
 
-btnStart.addEventListener("click", startSw);
-btnStop.addEventListener("click", stopSw);
-btnReset.addEventListener("click", resetSw);
+btnResetStopwatch.addEventListener("click", resetSw);
+btnStartStopwatch.addEventListener("click", startSw);
+btnStopStopwatch.addEventListener("click", stopSw);

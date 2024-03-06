@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link href="./src/css/output.css" rel="stylesheet" />
-    <script defer src="./src/js/shared.js"></script>
+    <script defer src="./src/js/main.js"></script>
     <script defer src="./src/js/stopwatch.js"></script>
     <title>Stopwatch window</title>
   </head>
@@ -28,32 +28,19 @@
           </div>
           <!-- Buttons -->
           <div class="w-[25rem] flex justify-around items-center">
-            <!-- Stop -->
-            <div class="">
-              <button
-                id="btnStop"
-                class="w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 shadow-btn-rounded caret-transparent"
-              >
-                Stop
-              </button>
-            </div>
             <!-- Reset -->
             <div class="self-end">
-              <button
-                id="btnReset"
-                class="shadow-btn-rounded w-14 aspect-square text-lg text-center rounded-full bg-rich-blue-700 caret-transparent"
-              >
+              <button id="btnResetStopwatch" class="btn-secondary">
                 Reset
               </button>
             </div>
             <!-- Start -->
             <div class="">
-              <button
-                id="btnStart"
-                class="shadow-btn-rounded w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 caret-transparent"
-              >
-                Start
-              </button>
+              <button id="btnStartStopwatch" class="btn-primary">Start</button>
+            </div>
+            <!-- Stop -->
+            <div class="self-end">
+              <button id="btnStopStopwatch" class="btn-secondary">Stop</button>
             </div>
           </div>
         </div>
