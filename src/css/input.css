@@ -27,4 +27,8 @@ body {
   .btn-secondary {
     @apply shadow-btn-rounded w-14 aspect-square text-lg text-center rounded-full bg-rich-blue-700 caret-transparent;
   }
+
+  .invisible {
+    @apply opacity-0 translate-y-[300%];
+  }
 }

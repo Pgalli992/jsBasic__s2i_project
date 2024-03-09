@@ -1,5 +1,7 @@
 "use strict";
 // ------------------------------------------------------------------
+
+// SVG icons for timer, counter, and calendar
 const timerSvg = `
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +56,7 @@ const calendarSvg = `
 // Functions
 // ----------------------------------------------------------------------------------
 
-// Reduces the data to 2 digits
+// Returns a 2-digit representation of a number
 function return2digit(num) {
   return num.toString().padStart(2, "0");
 }
@@ -82,6 +84,13 @@ function createEl(eTag, eParent, eId, eContent, eClass) {
   }
 }
 
+function addClassesToElements(elements, classes) {
+  elements.forEach(function (el) {
+    el.classList.add(...classes);
+  });
+}
+
+// Creating the main structure of the page
 createEl("div", "body", "main", _, [
   "w-screen",
   "h-screen",
@@ -89,9 +98,11 @@ createEl("div", "body", "main", _, [
   "flex",
   "justify-center",
   "items-center",
+  "truncate",
+  "relative",
 ]);
 createEl("div", main, "mainFrame", _, [
-  "w-[90vw]",
+  "w-11/12",
   "h-[90vh]",
   "border-4",
   "border-white",
@@ -109,93 +120,80 @@ createEl("div", mainFrame, "mainContainer", _, [
   "rounded-3xl",
   "px-10",
   "py-2",
+  "duration-300",
+  "absolute",
+  "top-10",
+  "translate-y-[38vh]",
 ]);
 
-// Stopwatch
-createEl("button", mainContainer, "stopwatchContainer", _, "container");
-// document
-//   .getElementById("stopwatchContainer")
-//   .classList.add("group", "flex", "flex-col", "justify-center", "items-center");
+// Creating btnStopwatch container
+createEl("button", mainContainer, "btnStopwatch", _, "container");
 
 createEl(
   "div",
-  stopwatchContainer,
+  btnStopwatch,
   "stopwatchContainerSvg",
   timerSvg,
   "containerSvg"
 );
 
-createEl("span", stopwatchContainer, _, "Stopwatch", "counterDescription");
+createEl("span", btnStopwatch, _, "Stopwatch", "counterDescription");
 
 // Spacer
 // Added div instead pr-5 to avoid unsightly borders on focus state
 createEl("div", mainContainer, _, _, "spacer");
 
-// Counter
-createEl("button", mainContainer, "counterContainer", _, "container");
+// Creating btnCounter container
+createEl("button", mainContainer, "btnCounter", _, "container");
 
-createEl(
-  "div",
-  counterContainer,
-  "counterContainerSvg",
-  counterSvg,
-  "containerSvg"
-);
+createEl("div", btnCounter, "counterContainerSvg", counterSvg, "containerSvg");
 
-createEl("span", counterContainer, _, "Stopwatch", "counterDescription");
+createEl("span", btnCounter, _, "Counter", "counterDescription");
 
 // Spacer
 // Added div instead pr-5 to avoid unsightly borders on focus state
 createEl("div", mainContainer, _, _, "spacer");
 
-// Calendar
-createEl("button", mainContainer, "calendarContainer", _, "container");
+// Creating btnCalendar container
+createEl("button", mainContainer, "btnCalendar", _, "container");
 
 createEl(
   "div",
-  calendarContainer,
+  btnCalendar,
   "calendarContainerSvg",
   calendarSvg,
   "containerSvg"
 );
 
-createEl("span", calendarContainer, _, "Calendar", "counterDescription");
+createEl("span", btnCalendar, _, "Calendar", "counterDescription");
 
-// Adding classes to style spacers
+// Applying common classes to recurring elements
 const spacers = document.querySelectorAll(".spacer");
-spacers.forEach(function (el) {
-  el.classList.add("border-r-4", "border-white");
-});
+addClassesToElements(spacers, ["border-r-4", "border-white"]);
 
 const containers = document.querySelectorAll(".container");
-containers.forEach(function (el) {
-  el.classList.add(
-    "group",
-    "flex",
-    "flex-col",
-    "justify-center",
-    "items-center"
-  );
-});
+addClassesToElements(containers, [
+  "group",
+  "flex",
+  "flex-col",
+  "justify-center",
+  "items-center",
+]);
 
 const containerSvgs = document.querySelectorAll(".containerSvg");
-containerSvgs.forEach(function (el) {
-  el.classList.add(
-    "translate-y-4",
-    "duration-300",
-    "group-hover:translate-y-0"
-  );
-});
+addClassesToElements(containerSvgs, [
+  "translate-y-4",
+  "duration-300",
+  "group-hover:translate-y-0",
+]);
 
 // Adding classes for counters' description span
 const counterDescriptions = document.querySelectorAll(".counterDescription");
-counterDescriptions.forEach(function (el) {
-  el.classList.add(
-    "text-xl",
-    "text-rich-blue-800",
-    "opacity-0",
-    "duration-300",
-    "group-hover:opacity-100",
-    "caret-transparent"
-  );
-});
+addClassesToElements(counterDescriptions, [
+  "text-xl",
+  "text-rich-blue-800",
+  "opacity-0",
+  "duration-300",
+  "group-hover:opacity-100",
+  "caret-transparent",
+]);

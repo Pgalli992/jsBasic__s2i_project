@@ -2,10 +2,72 @@
 
 // Selecting Elements
 // ----------------------------------------------------------------------------------
-const btnStopStopwatch = document.querySelector("#btnStopStopwatch");
-const btnStartStopwatch = document.querySelector("#btnStartStopwatch");
-const btnResetStopwatch = document.querySelector("#btnResetStopwatch");
-const swDisplay = document.querySelector("#swDisplay");
+const btn_stopwatch = document.getElementById("btnStopwatch");
+const btn_counter = document.getElementById("btnCounter");
+const btn_calendar = document.getElementById("btnCalendar");
+const main = document.getElementById("main");
+const mainContainerEl = document.getElementById("mainContainer");
+// Creating appStopwatch container
+createEl("div", main, "stopwatchContainer", _, [
+  "flex",
+  "flex-col",
+  "gap-16",
+  "items-center",
+  "absolute",
+  "invisible",
+]);
+
+// Display
+createEl("div", stopwatchContainer, "stopwatchDisplay", _, [
+  "w-full",
+  "h-auto",
+  "flex",
+  "justify-center",
+  "items-center",
+  "caret-transparent",
+]);
+createEl("span", stopwatchDisplay, "swDisplay", _, "text-9xl");
+
+// Creating btnContainer
+createEl("div", stopwatchContainer, "swBtnContainer", _, [
+  "w-[25rem]",
+  "flex",
+  "justify-around",
+  "items-center",
+]);
+
+// Reset
+createEl("div", swBtnContainer, "swBtnResetContainer", _, "self-end");
+createEl(
+  "button",
+  swBtnResetContainer,
+  "btnResetStopwatch",
+  "Reset",
+  "btn-secondary"
+);
+// Start
+createEl("div", swBtnContainer, "swBtnStartContainer", _, _);
+createEl(
+  "button",
+  swBtnStartContainer,
+  "btnStartStopwatch",
+  "Start",
+  "btn-primary"
+);
+// Stop
+createEl("div", swBtnContainer, "swBtnStopContainer", _, "self-end");
+createEl(
+  "button",
+  swBtnStopContainer,
+  "btnStopStopwatch",
+  "Reset",
+  "btn-secondary"
+);
+
+const btnStopStopwatch = document.getElementById("btnStopStopwatch");
+const btnStartStopwatch = document.getElementById("btnStartStopwatch");
+const btnResetStopwatch = document.getElementById("btnResetStopwatch");
+const swDisplay = document.getElementById("swDisplay");
 
 // Variables
 // ----------------------------------------------------------------------------------
@@ -69,3 +131,16 @@ function stopWatch() {
 btnResetStopwatch.addEventListener("click", resetSw);
 btnStartStopwatch.addEventListener("click", startSw);
 btnStopStopwatch.addEventListener("click", stopSw);
+
+btn_stopwatch.addEventListener("click", function () {
+  console.log("stopwatch");
+  mainContainerEl.classList.remove("translate-y-[38vh]");
+  mainContainerEl.classList.add("scale-50", "translate-y-0");
+  document.getElementById("stopwatchContainer").classList.toggle("invisible");
+});
+btn_counter.addEventListener("click", function () {
+  console.log("counter");
+  mainContainerEl.classList.remove("translate-y-[38vh]");
+  mainContainerEl.classList.add("scale-50", "translate-y-0");
+  document.getElementById("counterContainer").classList.toggle("invisible");
+});
