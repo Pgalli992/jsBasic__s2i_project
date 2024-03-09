@@ -133,7 +133,6 @@ btnStartStopwatch.addEventListener("click", startSw);
 btnStopStopwatch.addEventListener("click", stopSw);
 
 btn_stopwatch.addEventListener("click", function () {
-  console.log("stopwatch");
   mainContainerEl.classList.remove("translate-y-[38vh]");
   mainContainerEl.classList.add("scale-50", "translate-y-0");
   document.getElementById("stopwatchContainer").classList.toggle("invisible");

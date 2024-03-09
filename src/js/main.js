@@ -9,7 +9,7 @@ const timerSvg = `
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="#fff"
-    class="w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800"
+    class="w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800 group-focus:stroke-rich-blue-800"
   >
     <path
       stroke-linecap="round"
@@ -25,7 +25,7 @@ const counterSvg = `
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="#fff"
-    class="w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800"
+    class="w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800 group-focus:stroke-rich-blue-800"
   >
     <path
       stroke-linecap="round"
@@ -41,7 +41,7 @@ const calendarSvg = `
   viewBox="0 0 24 24"
   stroke-width="1.5"
   stroke="#fff"
-  class="w-16 aspect-square group-hover:stroke-rich-blue-800"
+  class="w-16 aspect-square group-hover:stroke-rich-blue-800 group-focus:stroke-rich-blue-800"
 >
   <path
     stroke-linecap="round"
