@@ -31,4 +31,8 @@ body {
   .invisible {
     @apply opacity-0 translate-y-[300%];
   }
+
+  .focused {
+    @apply stroke-rich-blue-900 scale-125;
+  }
 }

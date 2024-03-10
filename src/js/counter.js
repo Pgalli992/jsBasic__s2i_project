@@ -3,6 +3,8 @@
 // Selecting Elements
 // ----------------------------------------------------------------------------------
 createEl("div", main, "counterContainer", _, [
+  "tab",
+  "counter--2",
   "flex",
   "flex-col",
   "gap-16",
@@ -69,12 +71,12 @@ let counter = 0;
 
 // Functions
 // ----------------------------------------------------------------------------------
-function init() {
+function counterInit() {
   counter = 0;
   displayCounter();
   btnResetCounter.style.transform = "scale(1)";
 }
-init();
+counterInit();
 
 function increaseCounter() {
   counter += 1;
@@ -97,4 +99,4 @@ function displayCounter() {
 
 btnIncreseCounter.addEventListener("click", increaseCounter);
 btnReduceCounter.addEventListener("click", reduceCounter);
-btnResetCounter.addEventListener("click", init);
+btnResetCounter.addEventListener("click", counterInit);

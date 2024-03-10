@@ -9,6 +9,8 @@ const main = document.getElementById("main");
 const mainContainerEl = document.getElementById("mainContainer");
 // Creating appStopwatch container
 createEl("div", main, "stopwatchContainer", _, [
+  "tab",
+  "counter--1",
   "flex",
   "flex-col",
   "gap-16",
@@ -60,7 +62,7 @@ createEl(
   "button",
   swBtnStopContainer,
   "btnStopStopwatch",
-  "Reset",
+  "Stop",
   "btn-secondary"
 );
 
@@ -77,11 +79,11 @@ let elapsedTime = 0;
 
 // Functions
 // ----------------------------------------------------------------------------------
-function init() {
+function stopwatchInit() {
   swDisplay.innerHTML = "00:00:00";
 }
 
-init();
+stopwatchInit();
 
 function startSw() {
   if (!stopwatchInterval) {
@@ -107,7 +109,7 @@ function stopSw() {
 function resetSw() {
   stopSw(); // stop the interval
   elapsedTime = 0; // reset the elapsed paused time variable
-  swDisplay.innerHTML = "00:00:00"; // reset the display
+  stopwatchInit();
   btnStartStopwatch.style.transform = "scale(1)";
   btnStopStopwatch.style.transform = "scale(1)";
   btnResetStopwatch.style.transform = "scale(1)";
@@ -132,14 +134,14 @@ btnResetStopwatch.addEventListener("click", resetSw);
 btnStartStopwatch.addEventListener("click", startSw);
 btnStopStopwatch.addEventListener("click", stopSw);
 
-btn_stopwatch.addEventListener("click", function () {
-  mainContainerEl.classList.remove("translate-y-[38vh]");
-  mainContainerEl.classList.add("scale-50", "translate-y-0");
-  document.getElementById("stopwatchContainer").classList.toggle("invisible");
-});
-btn_counter.addEventListener("click", function () {
-  console.log("counter");
-  mainContainerEl.classList.remove("translate-y-[38vh]");
-  mainContainerEl.classList.add("scale-50", "translate-y-0");
-  document.getElementById("counterContainer").classList.toggle("invisible");
-});
+// btn_stopwatch.addEventListener("click", function () {
+//   mainContainerEl.classList.remove("translate-y-[38vh]");
+//   mainContainerEl.classList.add("scale-50", "translate-y-0");
+//   document.getElementById("stopwatchContainer").classList.toggle("invisible");
+// });
+// btn_counter.addEventListener("click", function () {
+//   console.log("counter");
+//   mainContainerEl.classList.remove("translate-y-[38vh]");
+//   mainContainerEl.classList.add("scale-50", "translate-y-0");
+//   document.getElementById("counterContainer").classList.toggle("invisible");
+// });

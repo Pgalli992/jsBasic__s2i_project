@@ -9,7 +9,7 @@ const timerSvg = `
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="#fff"
-    class="w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800 group-focus:stroke-rich-blue-800"
+    class="counterSVG counterSVG--1 w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800"
   >
     <path
       stroke-linecap="round"
@@ -25,7 +25,7 @@ const counterSvg = `
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="#fff"
-    class="w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800 group-focus:stroke-rich-blue-800"
+    class="counterSVG counterSVG--2 w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800"
   >
     <path
       stroke-linecap="round"
@@ -41,7 +41,7 @@ const calendarSvg = `
   viewBox="0 0 24 24"
   stroke-width="1.5"
   stroke="#fff"
-  class="w-16 aspect-square group-hover:stroke-rich-blue-800 group-focus:stroke-rich-blue-800"
+  class="counterSVG counterSVG--3 w-16 aspect-square group-hover:stroke-rich-blue-800"
 >
   <path
     stroke-linecap="round"
@@ -124,10 +124,11 @@ createEl("div", mainFrame, "mainContainer", _, [
   "absolute",
   "top-10",
   "translate-y-[38vh]",
+  "z-50",
 ]);
 
 // Creating btnStopwatch container
-createEl("button", mainContainer, "btnStopwatch", _, "container");
+createEl("button", mainContainer, "btnStopwatch", _, ["container", "mainBtn"]);
 
 createEl(
   "div",
@@ -144,7 +145,7 @@ createEl("span", btnStopwatch, _, "Stopwatch", "counterDescription");
 createEl("div", mainContainer, _, _, "spacer");
 
 // Creating btnCounter container
-createEl("button", mainContainer, "btnCounter", _, "container");
+createEl("button", mainContainer, "btnCounter", _, ["container", "mainBtn"]);
 
 createEl("div", btnCounter, "counterContainerSvg", counterSvg, "containerSvg");
 
@@ -155,7 +156,7 @@ createEl("span", btnCounter, _, "Counter", "counterDescription");
 createEl("div", mainContainer, _, _, "spacer");
 
 // Creating btnCalendar container
-createEl("button", mainContainer, "btnCalendar", _, "container");
+createEl("button", mainContainer, "btnCalendar", _, ["container", "mainBtn"]);
 
 createEl(
   "div",
@@ -197,3 +198,34 @@ addClassesToElements(counterDescriptions, [
   "group-hover:opacity-100",
   "caret-transparent",
 ]);
+
+const homeBtnContainer = document.getElementById("mainContainer");
+
+const mainBtns = document.querySelectorAll(".mainBtn");
+const counterSVGs = document.querySelectorAll(".counterSVG");
+const btnMainStopwatch = document.getElementById("btnStopwatch");
+const btnMainCounter = document.getElementById("btnCounter");
+const btnMainCalendar = document.getElementById("btnCalendar");
+
+btnMainStopwatch.dataset.tab = 1;
+btnMainCounter.dataset.tab = 2;
+btnMainCalendar.dataset.tab = 3;
+
+homeBtnContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".mainBtn");
+
+  // Guard clause
+  if (!clicked) return;
+
+  tabs.forEach((t) => t.classList.add("invisible"));
+  counterSVGs.forEach((b) => b.classList.remove("focused"));
+  document
+    .querySelector(`.counterSVG--${clicked.dataset.tab}`)
+    .classList.add("focused");
+  document
+    .querySelector(`.counter--${clicked.dataset.tab}`)
+    .classList.remove("invisible");
+
+  mainContainerEl.classList.remove("translate-y-[38vh]");
+  mainContainerEl.classList.add("scale-50", "translate-y-0");
+});
