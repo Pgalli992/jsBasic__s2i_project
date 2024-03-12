@@ -26,10 +26,11 @@ createEl("div", counterContainer, "counterDisplay", _, [
 
 // Creating btnContainer
 createEl("div", counterContainer, "counterBtnContainer", _, [
-  "w-[25rem]",
+  "w-80",
   "flex",
   "justify-around",
   "items-center",
+  "md:w-[25rem]",
 ]);
 
 // Reduce

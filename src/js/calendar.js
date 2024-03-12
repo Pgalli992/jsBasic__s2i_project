@@ -21,9 +21,10 @@ createEl("div", calendarContainer, "calendarInputField", _, [
 ]);
 
 createEl("input", calendarInputField, "dateInput", _, [
-  "text-6xl",
+  "text-3xl",
   "bg-rich-blue-300",
   "text-center",
+  "md:text-6xl",
 ]);
 document.getElementById("dateInput").type = "date";
 
@@ -31,7 +32,8 @@ createEl("div", calendarContainer, "calendarDisplay", _, [
   "flex",
   "justify-center",
   "items-center",
-  "gap-10",
+  "gap-4",
+  "md:gap-10",
 ]);
 // Days box
 createEl("div", calendarDisplay, "boxDays", _, [
@@ -44,10 +46,11 @@ createEl("div", calendarDisplay, "boxDays", _, [
 createEl("div", boxDays, "daysDiv", _, [
   "w-full",
   "min-h-9",
-  "text-3xl",
+  "text-2xl",
   "text-rich-blue-800",
+  "md:text-3xl",
 ]);
-createEl("span", boxDays, "dd", "Days", ["text-lg"]);
+createEl("span", boxDays, "dd", "Days", "text-lg");
 // Hours box
 createEl("div", calendarDisplay, "boxHours", _, [
   "flex",

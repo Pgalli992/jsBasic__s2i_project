@@ -21,7 +21,7 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply w-28 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 shadow-btn-rounded caret-transparent;
+    @apply w-24 aspect-square text-3xl text-center rounded-full bg-rich-blue-800 shadow-btn-rounded caret-transparent md:w-28;
   }
 
   .btn-secondary {

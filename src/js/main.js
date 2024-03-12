@@ -9,7 +9,7 @@ const timerSvg = `
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="#fff"
-    class="counterSVG counterSVG--1 w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800"
+    class="counterSVG counterSVG--1 w-10 aspect-square duration-300 group-hover:stroke-rich-blue-800 md:w-16"
   >
     <path
       stroke-linecap="round"
@@ -25,7 +25,7 @@ const counterSvg = `
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="#fff"
-    class="counterSVG counterSVG--2 w-16 aspect-square duration-300 group-hover:stroke-rich-blue-800"
+    class="counterSVG counterSVG--2 w-10 aspect-square duration-300 group-hover:stroke-rich-blue-800 md:w-16"
   >
     <path
       stroke-linecap="round"
@@ -41,7 +41,7 @@ const calendarSvg = `
   viewBox="0 0 24 24"
   stroke-width="1.5"
   stroke="#fff"
-  class="counterSVG counterSVG--3 w-16 aspect-square group-hover:stroke-rich-blue-800"
+  class="counterSVG counterSVG--3 w-10 aspect-square group-hover:stroke-rich-blue-800 md:w-16"
 >
   <path
     stroke-linecap="round"
@@ -114,17 +114,20 @@ createEl("div", main, "mainFrame", _, [
 createEl("div", mainFrame, "mainContainer", _, [
   "flex",
   "justify-center",
-  "gap-10",
+  "gap-4",
   "border-4",
   "border-white",
   "rounded-3xl",
-  "px-10",
+  "px-0",
   "py-2",
   "duration-300",
   "absolute",
   "top-10",
   "translate-y-[38vh]",
   "z-50",
+  "md:gap-10",
+  "md:px-10",
+  "md:py-2",
 ]);
 
 // Creating btnStopwatch container

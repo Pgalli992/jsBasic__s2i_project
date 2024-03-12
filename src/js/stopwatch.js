@@ -21,21 +21,22 @@ createEl("div", main, "stopwatchContainer", _, [
 
 // Display
 createEl("div", stopwatchContainer, "stopwatchDisplay", _, [
-  "w-full",
+  "w-11/12",
   "h-auto",
   "flex",
   "justify-center",
   "items-center",
   "caret-transparent",
 ]);
-createEl("span", stopwatchDisplay, "swDisplay", _, "text-9xl");
+createEl("span", stopwatchDisplay, "swDisplay", _, ["text-6xl", "md:text-9xl"]);
 
 // Creating btnContainer
 createEl("div", stopwatchContainer, "swBtnContainer", _, [
-  "w-[25rem]",
+  "w-80",
   "flex",
   "justify-around",
   "items-center",
+  "md:w-[25rem]",
 ]);
 
 // Reset
