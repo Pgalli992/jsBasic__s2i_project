@@ -15,9 +15,22 @@ createEl("div", calendarContainer, "calendarInputField", _, [
   "w-full",
   "h-auto",
   "flex",
+  "flex-col",
   "justify-center",
   "items-center",
   "caret-transparent",
+]);
+// Message
+createEl("div", calendarInputField, "calendarMsgBox", "Last date searched:", [
+  "w-full",
+  "h-auto",
+  "flex",
+  "justify-center",
+  "items-center",
+  "caret-transparent",
+  "text-xl",
+  "text-rich-blue-800",
+  "opacity-0",
 ]);
 
 createEl("input", calendarInputField, "dateInput", _, [
@@ -123,8 +136,8 @@ createEl(
   "Start",
   "btn-primary"
 );
-// Reset
-createEl("div", calendarBtnContainer, "calendarBtnResetContainer", _, [
+// Pause
+createEl("div", calendarBtnContainer, "calendarBtnPauseContainer", _, [
   "absolute",
   "top-1/2",
   "left-1/2",
@@ -133,10 +146,23 @@ createEl("div", calendarBtnContainer, "calendarBtnResetContainer", _, [
 ]);
 createEl(
   "button",
+  calendarBtnPauseContainer,
+  "calendarBtnPause",
+  "Pause",
+  "btn-primary"
+);
+// Reset;
+createEl("div", calendarBtnContainer, "calendarBtnResetContainer", _, [
+  "absolute",
+  "top-1/2",
+  "left-24",
+]);
+createEl(
+  "button",
   calendarBtnResetContainer,
   "calendarBtnReset",
   "Reset",
-  "btn-primary"
+  "btn-secondary"
 );
 
 // Selecting Elements
@@ -146,6 +172,7 @@ const hours = document.getElementById("hoursDiv");
 const minutes = document.getElementById("minutesDiv");
 const seconds = document.getElementById("secondsDiv");
 const calendarBtnStart = document.getElementById("calendarBtnStart");
+const calendarBtnPause = document.getElementById("calendarBtnPause");
 const calendarBtnReset = document.getElementById("calendarBtnReset");
 const dateInput = document.getElementById("dateInput");
 const btnStartDiv = document.getElementById("calendarBtnStartContainer");
@@ -155,6 +182,7 @@ const btnStartDiv = document.getElementById("calendarBtnStartContainer");
 const [date, time] = formatDate(new Date()).split(" ");
 // console.log(new Date());
 // Sun Feb 25 2024 23:53:41 GMT+0100 (Ora standard dell’Europa centrale)
+let dateSelected = localStorage.dateSelected;
 
 // Tabella in ms
 const secondInMs = 1000;
@@ -171,7 +199,12 @@ let audioCalendar = new Audio("./src/audio/calendarAudio.mp3");
 // ----------------------------------------------------------------------------------
 
 function calendarInit() {
-  dateInput.value = date;
+  if (!localStorage.dateSelected) {
+    dateInput.value = date;
+  } else {
+    dateInput.value = localStorage.dateSelected;
+    calendarMsgBox.style.opacity = 1;
+  }
   days.innerHTML = "0";
   hours.innerHTML = "0";
   minutes.innerHTML = "0";
@@ -192,8 +225,7 @@ function formatDate(date) {
 }
 
 function timer() {
-  const dateSelected = dateInput.value;
-  const dateSelectedInMs = new Date(dateSelected).getTime();
+  const dateSelectedInMs = new Date(localStorage.dateSelected).getTime();
   // Updating the countdown every second
   // Today
   const nowInMs = new Date().getTime();
@@ -206,8 +238,9 @@ function timer() {
     clearInterval(counterTimer);
     // Added timeout to display 'Resset btn' beore the alert.
     setTimeout(function () {
-      alert("The countdown is over, please click 'Reset'");
+      alert("The countdown is over, please choose a future date");
     }, 100);
+    btnStartDiv.style.zIndex = 30;
   } else {
     days.innerHTML = Math.floor(endCalendarTimer / dayInMs);
     hours.innerHTML = Math.floor((endCalendarTimer % dayInMs) / hourInMs);
@@ -219,19 +252,29 @@ function timer() {
   }
 }
 
+function pauseTimer() {
+  clearInterval(counterTimer);
+  btnStartDiv.style.zIndex = 30;
+  stopAudio(audioCalendar);
+}
+
 // Start timer
 calendarBtnStart.addEventListener("click", function () {
+  localStorage.dateSelected = dateInput.value;
   btnStartDiv.style.zIndex = -30;
   counterTimer = setInterval(timer, 1000);
   timer();
 });
 
+// Pause timer
+calendarBtnPause.addEventListener("click", pauseTimer);
+
 // Stop timer
 calendarBtnReset.addEventListener("click", function () {
-  clearInterval(counterTimer);
+  localStorage.removeItem("dateSelected");
+  calendarMsgBox.style.opacity = 0;
   calendarInit();
-  btnStartDiv.style.zIndex = 30;
-  stopAudio(audioCalendar);
+  pauseTimer();
 });
 
 const tabs = document.querySelectorAll(".tab");

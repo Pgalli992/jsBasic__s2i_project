@@ -643,12 +643,32 @@ video {
   left: 50%;
 }
 
+.left-full {
+  left: 100%;
+}
+
 .top-1\/2 {
   top: 50%;
 }
 
 .top-10 {
   top: 2.5rem;
+}
+
+.top-full {
+  top: 100%;
+}
+
+.left-3\/4 {
+  left: 75%;
+}
+
+.left-32 {
+  left: 8rem;
+}
+
+.left-24 {
+  left: 6rem;
 }
 
 .z-30 {
@@ -786,12 +806,12 @@ video {
   gap: 4rem;
 }
 
-.gap-4 {
-  gap: 1rem;
-}
-
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
 
 .self-end {

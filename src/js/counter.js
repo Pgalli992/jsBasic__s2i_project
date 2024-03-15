@@ -68,7 +68,7 @@ const counterDisplay = document.getElementById("counterDisplay");
 
 // Variables
 // ----------------------------------------------------------------------------------
-let counter = 0;
+let counter = parseInt(localStorage.counter);
 
 // Audio
 let audioCounter = new Audio("./src/audio/counterAudio.wav");
@@ -77,14 +77,20 @@ let audioResetCounter = new Audio("./src/audio/counterResetAudio.wav");
 // Functions
 // ----------------------------------------------------------------------------------
 function counterInit() {
-  counter = 0;
-  displayCounter();
-  btnResetCounter.style.transform = "scale(1)";
+  if (!localStorage.counter) {
+    counter = 0;
+    localStorage.counter = counter;
+    displayCounter();
+    btnResetCounter.style.transform = "scale(1)";
+  } else {
+    displayCounter();
+  }
 }
 counterInit();
 
 function increaseCounter() {
   counter += 1;
+  localStorage.counter = counter;
   btnResetCounter.style.transform = "scale(1.2)";
   displayCounter();
   playAudio(audioCounter);
@@ -92,21 +98,26 @@ function increaseCounter() {
 
 function reduceCounter() {
   counter -= 1;
+  localStorage.counter = counter;
   btnResetCounter.style.transform = "scale(1.2)";
   displayCounter();
   playAudio(audioCounter);
+}
+
+function resetCounter() {
+  counter = 0;
+  localStorage.counter = counter;
+  displayCounter();
+  playAudio(audioResetCounter);
 }
 
 function displayCounter() {
   counter >= 0
     ? (counterDisplay.style.color = "#fff")
     : (counterDisplay.style.color = "#b91c1c");
-  counterDisplay.innerHTML = counter;
+  counterDisplay.innerHTML = localStorage.counter;
 }
 
 btnIncreseCounter.addEventListener("click", increaseCounter);
 btnReduceCounter.addEventListener("click", reduceCounter);
-btnResetCounter.addEventListener("click", function () {
-  counterInit();
-  playAudio(audioResetCounter);
-});
+btnResetCounter.addEventListener("click", resetCounter);
