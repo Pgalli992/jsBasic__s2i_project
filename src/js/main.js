@@ -90,6 +90,19 @@ function addClassesToElements(elements, classes) {
   });
 }
 
+function playAudio(sound) {
+  sound.play();
+}
+
+function loopAudio(sound) {
+  sound.play();
+  sound.loop = true;
+}
+
+function stopAudio(sound) {
+  sound.pause();
+}
+
 // Creating the main structure of the page
 createEl("div", "body", "main", _, [
   "w-screen",
@@ -114,7 +127,7 @@ createEl("div", main, "mainFrame", _, [
 createEl("div", mainFrame, "mainContainer", _, [
   "flex",
   "justify-center",
-  "gap-4",
+  "gap-2",
   "border-4",
   "border-white",
   "rounded-3xl",

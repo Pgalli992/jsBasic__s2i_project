@@ -164,6 +164,9 @@ const dayInMs = 24 * hourInMs;
 
 let counterTimer;
 
+// Audio
+let audioCalendar = new Audio("./src/audio/calendarAudio.mp3");
+
 // Functions
 // ----------------------------------------------------------------------------------
 
@@ -212,6 +215,7 @@ function timer() {
     seconds.innerHTML = Math.floor(
       (endCalendarTimer % minuteInMs) / secondInMs
     );
+    loopAudio(audioCalendar);
   }
 }
 
@@ -226,8 +230,8 @@ calendarBtnStart.addEventListener("click", function () {
 calendarBtnReset.addEventListener("click", function () {
   clearInterval(counterTimer);
   calendarInit();
-  console.log("nit");
   btnStartDiv.style.zIndex = 30;
+  stopAudio(audioCalendar);
 });
 
 const tabs = document.querySelectorAll(".tab");

@@ -70,6 +70,10 @@ const counterDisplay = document.getElementById("counterDisplay");
 // ----------------------------------------------------------------------------------
 let counter = 0;
 
+// Audio
+let audioCounter = new Audio("./src/audio/counterAudio.wav");
+let audioResetCounter = new Audio("./src/audio/counterResetAudio.wav");
+
 // Functions
 // ----------------------------------------------------------------------------------
 function counterInit() {
@@ -83,12 +87,14 @@ function increaseCounter() {
   counter += 1;
   btnResetCounter.style.transform = "scale(1.2)";
   displayCounter();
+  playAudio(audioCounter);
 }
 
 function reduceCounter() {
   counter -= 1;
   btnResetCounter.style.transform = "scale(1.2)";
   displayCounter();
+  playAudio(audioCounter);
 }
 
 function displayCounter() {
@@ -100,4 +106,7 @@ function displayCounter() {
 
 btnIncreseCounter.addEventListener("click", increaseCounter);
 btnReduceCounter.addEventListener("click", reduceCounter);
-btnResetCounter.addEventListener("click", counterInit);
+btnResetCounter.addEventListener("click", function () {
+  counterInit();
+  playAudio(audioResetCounter);
+});

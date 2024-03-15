@@ -78,6 +78,9 @@ let startTime;
 let stopwatchInterval;
 let elapsedTime = 0;
 
+// Audio
+let audioStopwatch = new Audio("./src/audio/stopwatchAudio.wav");
+
 // Functions
 // ----------------------------------------------------------------------------------
 function stopwatchInit() {
@@ -88,13 +91,13 @@ stopwatchInit();
 
 function startSw() {
   if (!stopwatchInterval) {
-    console.log("start");
     startTime = new Date().getTime() - elapsedTime;
     // Update every second
     stopwatchInterval = setInterval(stopWatch, 1000);
     btnStartStopwatch.style.transform = "scale(0.8)";
     btnStopStopwatch.style.transform = "scale(1.2)";
     btnResetStopwatch.style.transform = "scale(1.2)";
+    loopAudio(audioStopwatch);
   }
 }
 
@@ -105,6 +108,7 @@ function stopSw() {
   btnStartStopwatch.style.transform = "scale(1.2)";
   btnStopStopwatch.style.transform = "scale(.8)";
   btnResetStopwatch.style.transform = "scale(1.2)";
+  stopAudio(audioStopwatch);
 }
 
 function resetSw() {
@@ -114,6 +118,7 @@ function resetSw() {
   btnStartStopwatch.style.transform = "scale(1)";
   btnStopStopwatch.style.transform = "scale(1)";
   btnResetStopwatch.style.transform = "scale(1)";
+  stopAudio(audioStopwatch);
 }
 
 function stopWatch() {
