@@ -184,6 +184,8 @@ const [date, time] = formatDate(new Date()).split(" ");
 // Sun Feb 25 2024 23:53:41 GMT+0100 (Ora standard dell’Europa centrale)
 let dateSelected = localStorage.dateSelected;
 
+let audioWinner = new Audio("./src/audio/winner.wav");
+
 // Tabella in ms
 const secondInMs = 1000;
 const minuteInMs = 60 * secondInMs;
@@ -234,6 +236,16 @@ function timer() {
   // console.log(dateSelectedInMs);
   // console.log(endCalendarTimer);
 
+  if (nowInMs === Math.abs(endCalendarTimer)) {
+    setTimeout(function () {
+      alert("You found the EaserEgg");
+    }, 100);
+    playAudio(audioWinner);
+    days.innerHTML = "🐣";
+    hours.innerHTML = "🐣";
+    minutes.innerHTML = "🐣";
+    seconds.innerHTML = "🐣";
+  }
   if (nowInMs === dateSelectedInMs || endCalendarTimer < 0) {
     clearInterval(counterTimer);
     // Added timeout to display 'Resset btn' beore the alert.
