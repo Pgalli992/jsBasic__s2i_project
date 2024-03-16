@@ -26,5 +26,7 @@ _Sono ammesse tutte le funzionalità aggiuntive che si ritengono necessarie._
 ## Contatti:
 <a href='https://github.com/Pgalli992/MyPortfolio_html_css_s2i_project.git'>Link al Portfolio: Paolo Galli<a>
 
+---
+
 ## BONUS 🐣
 Trova l'EasterEgg prima di dare un'occhiata al codice.
