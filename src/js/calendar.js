@@ -238,7 +238,9 @@ function timer() {
 
   if (nowInMs === Math.abs(endCalendarTimer)) {
     setTimeout(function () {
-      alert("You found the EaserEgg");
+      alert(
+        "You found the EaserEgg! https://github.com/Pgalli992/jsBasic__s2i_project.git"
+      );
     }, 100);
     playAudio(audioWinner);
     days.innerHTML = "🐣";
