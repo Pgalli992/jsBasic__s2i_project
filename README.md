@@ -23,11 +23,10 @@ _Sono ammesse tutte le funzionalità aggiuntive che si ritengono necessarie._
   * HTML
   * CSS _(Tailwind)_
   * JavaScript
+## Link
+<a href="https://pg-counter.netlify.app/">Link al sito<a>
 ## Contatti:
 <a href='https://github.com/Pgalli992/MyPortfolio_html_css_s2i_project.git'>Link al Portfolio: Paolo Galli<a>
-
-## Link
-<a href="https://github.com/Pgalli992/jsBasic__s2i_project.git](https://pg-counter.netlify.app/">Link al sito<a>
 ---
 
 ## BONUS 🐣
