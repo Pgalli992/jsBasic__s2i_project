@@ -3,7 +3,7 @@
 _The counters_ raccoglie i 3 contatori per eccellenza:
   - **_Stopwatch_**: permette di avviare un timer per contare secondi, minuti ed ore.
   - **_Counter_**: permette di incrementare o dominuire di una unità partendo da 0.
-  - **_Calendar_**: permette di selezionare una data futura e determinare il tempo mancante al raggiunggimento del giorno selezionato.
+  - **_Calendar_**: permette di selezionare una data futura e determinare il tempo mancante al raggiungimento del giorno selezionato.
 
 In tutti e 3 i contatori i dati vengono salvati nel 'localStorage', questo per evitare di perdere il conto. **Altrimenti che contatori sarebbero?!**
 
@@ -23,9 +23,10 @@ _Sono ammesse tutte le funzionalità aggiuntive che si ritengono necessarie._
   * HTML
   * CSS _(Tailwind)_
   * JavaScript
+## Link
+<a href="https://pg-counter.netlify.app/">Link al sito<a>
 ## Contatti:
 <a href='https://github.com/Pgalli992/MyPortfolio_html_css_s2i_project.git'>Link al Portfolio: Paolo Galli<a>
-
 ---
 
 ## BONUS 🐣

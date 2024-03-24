@@ -275,6 +275,7 @@ function pauseTimer() {
 // Start timer
 calendarBtnStart.addEventListener("click", function () {
   localStorage.dateSelected = dateInput.value;
+  calendarMsgBox.style.opacity = 0;
   btnStartDiv.style.zIndex = -30;
   counterTimer = setInterval(timer, 1000);
   timer();
